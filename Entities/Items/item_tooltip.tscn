@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8f51ypilr6t4"]
+
+[ext_resource type="FontFile" uid="uid://ctu384ddnwdbu" path="res://Assets/Fonts/MinimalPixelFont.ttf" id="1_vft6b"]
+[ext_resource type="Texture2D" uid="uid://2vw5bmi25yrv" path="res://Entities/Inventory/Art/Rect.png" id="2_m3jio"]
+
+[sub_resource type="Theme" id="Theme_gg6n8"]
+default_font = ExtResource("1_vft6b")
+default_font_size = 16
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mf4b0"]
+texture = ExtResource("2_m3jio")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[node name="ItemTooltip" type="PanelContainer" groups=["item_tooltip"]]
+custom_minimum_size = Vector2(128, 32)
+offset_right = 128.0
+offset_bottom = 32.0
+theme = SubResource("Theme_gg6n8")
+theme_override_styles/panel = SubResource("StyleBoxTexture_mf4b0")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://ujkd2gq3ti4n"]
+
+[ext_resource type="FontFile" uid="uid://ctu384ddnwdbu" path="res://Assets/Fonts/MinimalPixelFont.ttf" id="1_apmsk"]
+[ext_resource type="Texture2D" uid="uid://oop5a2845tcf" path="res://Entities/Items/Art/Resources.png" id="2_7esmb"]
+[ext_resource type="Script" path="res://Entities/Slots/grabbed_item_slot.gd" id="2_fn66m"]
+
+[sub_resource type="Theme" id="Theme_vatpk"]
+default_font = ExtResource("1_apmsk")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q0ob2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ymwu"]
+atlas = ExtResource("2_7esmb")
+region = Rect2(0, 0, 16, 16)
+
+[node name="GrabbedItemSlot" type="PanelContainer" groups=["grabbed_item"]]
+modulate = Color(1, 1, 1, 0.588235)
+custom_minimum_size = Vector2(24, 24)
+offset_right = 24.0
+offset_bottom = 24.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme = SubResource("Theme_vatpk")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_q0ob2")
+script = ExtResource("2_fn66m")
+
+[node name="ItemTexture" type="Sprite2D" parent="."]
+position = Vector2(4, 4)
+texture = SubResource("AtlasTexture_2ymwu")
+centered = false
+
+[node name="QuantityLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 16
+text = "25"
+horizontal_alignment = 1
+vertical_alignment = 1

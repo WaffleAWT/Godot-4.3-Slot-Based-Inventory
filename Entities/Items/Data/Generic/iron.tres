@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://c1y3qf0684py6"]
+
+[ext_resource type="Script" path="res://Entities/Items/item.gd" id="1_7bhbf"]
+[ext_resource type="Texture2D" uid="uid://oop5a2845tcf" path="res://Entities/Items/Art/Resources.png" id="2_mnrvp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_id5lp"]
+atlas = ExtResource("2_mnrvp")
+region = Rect2(32, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_7bhbf")
+name = "Iron"
+description = "Multifunctional crafting item!"
+stackable = true
+texture = SubResource("AtlasTexture_id5lp")

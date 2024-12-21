@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemFuel" load_steps=4 format=3 uid="uid://8m5ktk62ip0t"]
+
+[ext_resource type="Script" path="res://Entities/Items/Data/Fuel/item_fuel.gd" id="1_jfn8l"]
+[ext_resource type="Texture2D" uid="uid://oop5a2845tcf" path="res://Entities/Items/Art/Resources.png" id="2_26m88"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fscx8"]
+atlas = ExtResource("2_26m88")
+region = Rect2(0, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_jfn8l")
+burn_time = 5
+name = "Stick"
+description = "Basic resource!"
+stackable = true
+texture = SubResource("AtlasTexture_fscx8")

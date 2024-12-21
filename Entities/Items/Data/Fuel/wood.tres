@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemFuel" load_steps=4 format=3 uid="uid://br6686r0bhnoe"]
+
+[ext_resource type="Script" path="res://Entities/Items/Data/Fuel/item_fuel.gd" id="1_tt3kb"]
+[ext_resource type="Texture2D" uid="uid://oop5a2845tcf" path="res://Entities/Items/Art/Resources.png" id="2_2b7w5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjled"]
+atlas = ExtResource("2_2b7w5")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_tt3kb")
+burn_time = 10
+name = "Wood"
+description = "Basic resource!"
+stackable = true
+texture = SubResource("AtlasTexture_cjled")

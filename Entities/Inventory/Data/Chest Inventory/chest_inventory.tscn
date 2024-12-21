@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://ca3uw5fp7ape5"]
+
+[ext_resource type="FontFile" uid="uid://ctu384ddnwdbu" path="res://Assets/Fonts/MinimalPixelFont.ttf" id="1_wnjko"]
+[ext_resource type="Texture2D" uid="uid://2vw5bmi25yrv" path="res://Entities/Inventory/Art/Rect.png" id="2_vfy0m"]
+[ext_resource type="Script" path="res://Entities/Inventory/Data/Chest Inventory/chest_inventory.gd" id="3_00vw5"]
+[ext_resource type="PackedScene" uid="uid://ypv0tgiuyttb" path="res://Entities/Slots/slot.tscn" id="3_oc7wa"]
+
+[sub_resource type="Theme" id="Theme_a36xh"]
+default_font = ExtResource("1_wnjko")
+default_font_size = 16
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x75x6"]
+texture = ExtResource("2_vfy0m")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[node name="ChestInventory" type="PanelContainer"]
+offset_right = 144.0
+offset_bottom = 103.0
+pivot_offset = Vector2(80, 45)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_a36xh")
+theme_override_styles/panel = SubResource("StyleBoxTexture_x75x6")
+script = ExtResource("3_00vw5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+text = "Chest"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SlotsContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+columns = 5
+
+[node name="Slot" parent="VBoxContainer/SlotsContainer" instance=ExtResource("3_oc7wa")]
+layout_mode = 2
+
+[node name="Slot2" parent="VBoxContainer/SlotsContainer" instance=ExtResource("3_oc7wa")]
+layout_mode = 2
+
+[node name="Slot3" parent="VBoxContainer/SlotsContainer" instance=ExtResource("3_oc7wa")]
+layout_mode = 2
+
+[node name="Slot4" parent="VBoxContainer/SlotsContainer" instance=ExtResource("3_oc7wa")]
+layout_mode = 2
+
+[node name="Slot5" parent="VBoxContainer/SlotsContainer" instance=ExtResource("3_oc7wa")]
+layout_mode = 2
+
+[node name="Slot6" parent="VBoxContainer/SlotsContainer" instance=ExtResource("3_oc7wa")]
+layout_mode = 2
+
+[node name="Slot7" parent="VBoxContainer/SlotsContainer" instance=ExtResource("3_oc7wa")]
+layout_mode = 2
+
+[node name="Slot8" parent="VBoxContainer/SlotsContainer" instance=ExtResource("3_oc7wa")]
+layout_mode = 2
+
+[node name="Slot9" parent="VBoxContainer/SlotsContainer" instance=ExtResource("3_oc7wa")]
+layout_mode = 2
+
+[node name="Slot10" parent="VBoxContainer/SlotsContainer" instance=ExtResource("3_oc7wa")]
+layout_mode = 2
+
+[node name="Slot11" parent="VBoxContainer/SlotsContainer" instance=ExtResource("3_oc7wa")]
+layout_mode = 2
+
+[node name="Slot12" parent="VBoxContainer/SlotsContainer" instance=ExtResource("3_oc7wa")]
+layout_mode = 2
+
+[node name="Slot13" parent="VBoxContainer/SlotsContainer" instance=ExtResource("3_oc7wa")]
+layout_mode = 2
+
+[node name="Slot14" parent="VBoxContainer/SlotsContainer" instance=ExtResource("3_oc7wa")]
+layout_mode = 2
+
+[node name="Slot15" parent="VBoxContainer/SlotsContainer" instance=ExtResource("3_oc7wa")]
+layout_mode = 2

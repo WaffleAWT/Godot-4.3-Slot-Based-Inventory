@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://ypv0tgiuyttb"]
+
+[ext_resource type="FontFile" uid="uid://ctu384ddnwdbu" path="res://Assets/Fonts/MinimalPixelFont.ttf" id="1_f1c1d"]
+[ext_resource type="Script" path="res://Entities/Slots/slot.gd" id="2_modfn"]
+[ext_resource type="Texture2D" uid="uid://c55308f3ra7l3" path="res://Entities/Slots/Art/Empty Slot.png" id="3_peev2"]
+
+[sub_resource type="Theme" id="Theme_c0i61"]
+default_font = ExtResource("1_f1c1d")
+default_font_size = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l8tq7"]
+
+[node name="Slot" type="PanelContainer" node_paths=PackedStringArray("slot_texture", "item_texture", "quantity_label")]
+custom_minimum_size = Vector2(24, 24)
+offset_right = 24.0
+offset_bottom = 24.0
+theme = SubResource("Theme_c0i61")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_l8tq7")
+script = ExtResource("2_modfn")
+slot_texture = NodePath("SlotTexture")
+item_texture = NodePath("ItemTexture")
+quantity_label = NodePath("QuantityLabel")
+
+[node name="SlotTexture" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("3_peev2")
+stretch_mode = 5
+
+[node name="ItemTexture" type="Sprite2D" parent="."]
+position = Vector2(4, 4)
+centered = false
+
+[node name="QuantityLabel" type="Label" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/outline_size = 4
+text = "25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

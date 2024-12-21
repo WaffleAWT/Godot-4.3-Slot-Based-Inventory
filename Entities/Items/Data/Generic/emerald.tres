@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://c6kky0cn60uqn"]
+
+[ext_resource type="Script" path="res://Entities/Items/item.gd" id="1_8mehy"]
+[ext_resource type="Texture2D" uid="uid://oop5a2845tcf" path="res://Entities/Items/Art/Resources.png" id="2_kl8su"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6re1"]
+atlas = ExtResource("2_kl8su")
+region = Rect2(64, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_8mehy")
+name = "Emerald"
+description = "Rare resource!"
+stackable = true
+texture = SubResource("AtlasTexture_j6re1")

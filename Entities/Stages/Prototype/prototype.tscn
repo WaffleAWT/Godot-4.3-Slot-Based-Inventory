@@ -1,0 +1,132 @@
+[gd_scene load_steps=17 format=3 uid="uid://ibf210iborfi"]
+
+[ext_resource type="Script" path="res://Entities/Stages/Prototype/prototype.gd" id="1_iqyha"]
+[ext_resource type="PackedScene" uid="uid://bjg4h1d7jgo15" path="res://Entities/Foraging/Furnace/furnace.tscn" id="2_yr3ti"]
+[ext_resource type="PackedScene" uid="uid://dyo26itop8ftn" path="res://Entities/Foraging/Chest/chest.tscn" id="3_xj86g"]
+[ext_resource type="PackedScene" uid="uid://jpufg2iu7w1o" path="res://Entities/Player/player.tscn" id="4_v4h34"]
+[ext_resource type="Script" path="res://Entities/Inventory/item_drop_area.gd" id="5_iok8f"]
+[ext_resource type="PackedScene" uid="uid://chojy51xowuml" path="res://Entities/Inventory/Data/Player Inventory/player_inventory.tscn" id="6_hgn6o"]
+[ext_resource type="Resource" uid="uid://c6kky0cn60uqn" path="res://Entities/Items/Data/Generic/emerald.tres" id="7_rdecq"]
+[ext_resource type="Resource" uid="uid://cjumh0n6mwhrs" path="res://Entities/Items/Data/Generic/hide.tres" id="8_a5fw2"]
+[ext_resource type="Resource" uid="uid://5gx0ypga66na" path="res://Entities/Items/Data/Smeltable/iron_ore.tres" id="9_43j80"]
+[ext_resource type="Resource" uid="uid://8m5ktk62ip0t" path="res://Entities/Items/Data/Fuel/stick.tres" id="10_f3ly7"]
+[ext_resource type="Resource" uid="uid://br6686r0bhnoe" path="res://Entities/Items/Data/Fuel/wood.tres" id="11_q5a5i"]
+[ext_resource type="Resource" uid="uid://dvcivqcvswde8" path="res://Entities/Items/Data/Generic/gold.tres" id="12_0xg3m"]
+[ext_resource type="Resource" uid="uid://bdgrykn7hgve7" path="res://Entities/Items/Data/Smeltable/emerald_ore.tres" id="13_oae11"]
+[ext_resource type="PackedScene" uid="uid://ujkd2gq3ti4n" path="res://Entities/Slots/grabbed_item_slot.tscn" id="14_d5865"]
+[ext_resource type="PackedScene" uid="uid://b8f51ypilr6t4" path="res://Entities/Items/item_tooltip.tscn" id="15_kmgqb"]
+[ext_resource type="Script" path="res://Entities/Items/item_tooltip.gd" id="16_1jut3"]
+
+[node name="Prototype" type="Node2D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_iqyha")
+player = NodePath("Player")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Furnace" parent="." instance=ExtResource("2_yr3ti")]
+position = Vector2(216, 49)
+
+[node name="Furnace2" parent="." instance=ExtResource("2_yr3ti")]
+position = Vector2(66, 109)
+
+[node name="Chest" parent="." instance=ExtResource("3_xj86g")]
+position = Vector2(117, 40)
+
+[node name="Chest2" parent="." instance=ExtResource("3_xj86g")]
+position = Vector2(224, 138)
+
+[node name="Player" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("4_v4h34")]
+position = Vector2(160, 90)
+inventory = NodePath("../UI/ItemDropArea/Inventories/HBoxContainer/PlayerInventory")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ItemDropArea" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("5_iok8f")
+
+[node name="Inventories" type="Control" parent="UI/ItemDropArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = 45.0
+offset_right = 80.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/ItemDropArea/Inventories" groups=["inventories_container"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -51.5
+offset_right = 72.0
+offset_bottom = 51.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(72, 52)
+alignment = 1
+
+[node name="PlayerInventory" parent="UI/ItemDropArea/Inventories/HBoxContainer" instance=ExtResource("6_hgn6o")]
+visible = false
+layout_mode = 2
+
+[node name="Slot" parent="UI/ItemDropArea/Inventories/HBoxContainer/PlayerInventory/VBoxContainer/SlotsContainer" index="0"]
+item = ExtResource("7_rdecq")
+quantity = 3
+
+[node name="Slot3" parent="UI/ItemDropArea/Inventories/HBoxContainer/PlayerInventory/VBoxContainer/SlotsContainer" index="2"]
+item = ExtResource("8_a5fw2")
+quantity = 15
+
+[node name="Slot4" parent="UI/ItemDropArea/Inventories/HBoxContainer/PlayerInventory/VBoxContainer/SlotsContainer" index="3"]
+item = ExtResource("9_43j80")
+quantity = 2
+
+[node name="Slot6" parent="UI/ItemDropArea/Inventories/HBoxContainer/PlayerInventory/VBoxContainer/SlotsContainer" index="5"]
+item = ExtResource("8_a5fw2")
+quantity = 15
+
+[node name="Slot7" parent="UI/ItemDropArea/Inventories/HBoxContainer/PlayerInventory/VBoxContainer/SlotsContainer" index="6"]
+item = ExtResource("10_f3ly7")
+quantity = 25
+
+[node name="Slot8" parent="UI/ItemDropArea/Inventories/HBoxContainer/PlayerInventory/VBoxContainer/SlotsContainer" index="7"]
+item = ExtResource("11_q5a5i")
+quantity = 3
+
+[node name="Slot9" parent="UI/ItemDropArea/Inventories/HBoxContainer/PlayerInventory/VBoxContainer/SlotsContainer" index="8"]
+item = ExtResource("12_0xg3m")
+
+[node name="Slot10" parent="UI/ItemDropArea/Inventories/HBoxContainer/PlayerInventory/VBoxContainer/SlotsContainer" index="9"]
+item = ExtResource("13_oae11")
+
+[node name="GrabbedItemSlot" parent="UI" instance=ExtResource("14_d5865")]
+visible = false
+
+[node name="ItemTooltip" parent="UI" instance=ExtResource("15_kmgqb")]
+visible = false
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 130.0
+offset_bottom = 34.0
+scale = Vector2(0.5, 0.5)
+script = ExtResource("16_1jut3")
+
+[connection signal="gui_input" from="UI/ItemDropArea" to="UI/ItemDropArea" method="_on_gui_input"]
+
+[editable path="UI/ItemDropArea/Inventories/HBoxContainer/PlayerInventory"]

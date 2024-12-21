@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjg4h1d7jgo15"]
+
+[ext_resource type="Texture2D" uid="uid://dygv6te7dh7y" path="res://Entities/Foraging/Furnace/Art/Furnace.png" id="1_n5xnn"]
+[ext_resource type="Script" path="res://Entities/Foraging/external_inventory.gd" id="1_soocx"]
+[ext_resource type="PackedScene" uid="uid://di38ufls46dky" path="res://Entities/Inventory/Data/Furnace Inventory/furnace_inventory.tscn" id="2_x21vs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfhfh"]
+atlas = ExtResource("1_n5xnn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fj885"]
+atlas = ExtResource("1_n5xnn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1icuu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfhfh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fj885")
+}],
+"loop": true,
+"name": &"working",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0ggv"]
+size = Vector2(16, 16)
+
+[node name="Furnace" type="StaticBody2D" node_paths=PackedStringArray("animator") groups=["external_inventory_owner"]]
+collision_layer = 5
+collision_mask = 0
+script = ExtResource("1_soocx")
+inventory_scene = ExtResource("2_x21vs")
+animator = NodePath("AnimatedSprite2D")
+type = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1icuu")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_q0ggv")

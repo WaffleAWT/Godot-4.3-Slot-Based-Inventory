@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://cbb3hlvwqqexc"]
+
+[ext_resource type="Script" path="res://Entities/Items/item.gd" id="1_enaef"]
+[ext_resource type="Texture2D" uid="uid://oop5a2845tcf" path="res://Entities/Items/Art/Resources.png" id="2_wnl23"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c75f0"]
+atlas = ExtResource("2_wnl23")
+region = Rect2(16, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_enaef")
+name = "Rope"
+description = "Multifunctional crafting item!"
+stackable = true
+texture = SubResource("AtlasTexture_c75f0")

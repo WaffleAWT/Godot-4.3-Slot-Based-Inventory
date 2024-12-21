@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemSmeltable" load_steps=5 format=3 uid="uid://bdgrykn7hgve7"]
+
+[ext_resource type="Script" path="res://Entities/Items/Data/Smeltable/item_smeltable.gd" id="1_0dt76"]
+[ext_resource type="Resource" uid="uid://c6kky0cn60uqn" path="res://Entities/Items/Data/Generic/emerald.tres" id="1_8p6wu"]
+[ext_resource type="Texture2D" uid="uid://oop5a2845tcf" path="res://Entities/Items/Art/Resources.png" id="3_iuygs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byeol"]
+atlas = ExtResource("3_iuygs")
+region = Rect2(64, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_0dt76")
+time_to_smelt = 40
+product = ExtResource("1_8p6wu")
+name = "Emerald Ore"
+description = "Rare ore!"
+stackable = true
+texture = SubResource("AtlasTexture_byeol")

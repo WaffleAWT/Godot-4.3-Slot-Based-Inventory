@@ -1,0 +1,120 @@
+[gd_scene load_steps=10 format=3 uid="uid://di38ufls46dky"]
+
+[ext_resource type="FontFile" uid="uid://ctu384ddnwdbu" path="res://Assets/Fonts/MinimalPixelFont.ttf" id="1_8w3xa"]
+[ext_resource type="Texture2D" uid="uid://2vw5bmi25yrv" path="res://Entities/Inventory/Art/Rect.png" id="2_nwpg3"]
+[ext_resource type="PackedScene" uid="uid://ypv0tgiuyttb" path="res://Entities/Slots/slot.tscn" id="3_bstv5"]
+[ext_resource type="Script" path="res://Entities/Inventory/Data/Furnace Inventory/furnace_inventory.gd" id="3_p60im"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0cc0v"]
+
+[sub_resource type="Theme" id="Theme_70m03"]
+default_font = ExtResource("1_8w3xa")
+default_font_size = 16
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ucave"]
+texture = ExtResource("2_nwpg3")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sq5v1"]
+bg_color = Color(0.537255, 0.117647, 0.168627, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1krcw"]
+bg_color = Color(0.2, 0.596078, 0.294118, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="FurnaceInventory" type="VBoxContainer" node_paths=PackedStringArray("fuel_slot", "smeltable_slot", "output_slot", "progress_bar", "fuel_timer", "smeltable_timer")]
+offset_right = 151.0
+offset_bottom = 74.0
+script = ExtResource("3_p60im")
+fuel_slot = NodePath("PanelContainer/VBoxContainer/SlotsContainer/FuelSlot")
+smeltable_slot = NodePath("PanelContainer/VBoxContainer/SlotsContainer/SmeltableSlot")
+output_slot = NodePath("PanelContainer/VBoxContainer/SlotsContainer/OutputSlot")
+progress_bar = NodePath("PanelContainer/VBoxContainer/ProgressBar")
+fuel_timer = NodePath("FuelTimer")
+smeltable_timer = NodePath("SmeltableTimer")
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 12
+theme_override_styles/separator = SubResource("StyleBoxEmpty_0cc0v")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+theme = SubResource("Theme_70m03")
+theme_override_styles/panel = SubResource("StyleBoxTexture_ucave")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Labels" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Labels"]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+text = "Fuel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/Labels"]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+text = "Smeltable"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/Labels"]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+text = "Output"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SlotsContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="FuelSlot" parent="PanelContainer/VBoxContainer/SlotsContainer" instance=ExtResource("3_bstv5")]
+layout_mode = 2
+type = 0
+
+[node name="SmeltableSlot" parent="PanelContainer/VBoxContainer/SlotsContainer" instance=ExtResource("3_bstv5")]
+layout_mode = 2
+type = 1
+
+[node name="OutputSlot" parent="PanelContainer/VBoxContainer/SlotsContainer" instance=ExtResource("3_bstv5")]
+layout_mode = 2
+type = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_sq5v1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1krcw")
+step = 1.0
+value = 50.0
+
+[node name="FuelTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="SmeltableTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="FuelTimer" to="." method="_on_fuel_timer_timeout"]
+[connection signal="timeout" from="SmeltableTimer" to="." method="_on_smeltable_timer_timeout"]

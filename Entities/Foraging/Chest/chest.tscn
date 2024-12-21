@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://dyo26itop8ftn"]
+
+[ext_resource type="Script" path="res://Entities/Foraging/external_inventory.gd" id="1_mfth7"]
+[ext_resource type="Texture2D" uid="uid://bkrqhyml3ye5k" path="res://Entities/Foraging/Chest/Art/Chest.png" id="1_q7wu0"]
+[ext_resource type="PackedScene" uid="uid://ca3uw5fp7ape5" path="res://Entities/Inventory/Data/Chest Inventory/chest_inventory.tscn" id="2_gm18g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfib4"]
+atlas = ExtResource("1_q7wu0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2052"]
+atlas = ExtResource("1_q7wu0")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8yohn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfib4")
+}],
+"loop": false,
+"name": &"close",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2052")
+}],
+"loop": false,
+"name": &"open",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mcqr2"]
+size = Vector2(16, 16)
+
+[node name="Chest" type="StaticBody2D" node_paths=PackedStringArray("animator") groups=["external_inventory_owner"]]
+collision_layer = 5
+collision_mask = 0
+script = ExtResource("1_mfth7")
+inventory_scene = ExtResource("2_gm18g")
+animator = NodePath("AnimatedSprite2D")
+type = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8yohn")
+animation = &"close"
+autoplay = "close"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_mcqr2")

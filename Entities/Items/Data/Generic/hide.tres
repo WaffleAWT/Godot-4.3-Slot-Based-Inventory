@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://cjumh0n6mwhrs"]
+
+[ext_resource type="Script" path="res://Entities/Items/item.gd" id="1_jdcgd"]
+[ext_resource type="Texture2D" uid="uid://oop5a2845tcf" path="res://Entities/Items/Art/Resources.png" id="2_tduyf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0omxw"]
+atlas = ExtResource("2_tduyf")
+region = Rect2(16, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_jdcgd")
+name = "Hide"
+description = "Basic animal product!"
+stackable = true
+texture = SubResource("AtlasTexture_0omxw")

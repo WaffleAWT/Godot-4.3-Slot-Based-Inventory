@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://dvcivqcvswde8"]
+
+[ext_resource type="Script" path="res://Entities/Items/item.gd" id="1_dyx21"]
+[ext_resource type="Texture2D" uid="uid://oop5a2845tcf" path="res://Entities/Items/Art/Resources.png" id="2_k714o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxv27"]
+atlas = ExtResource("2_k714o")
+region = Rect2(48, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_dyx21")
+name = "Gold"
+description = "Good for tools and armor!"
+stackable = true
+texture = SubResource("AtlasTexture_wxv27")
