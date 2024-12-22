@@ -6,9 +6,13 @@ const DECELERATION : float = 500.0
 
 @export var animator : AnimatedSprite2D
 @export var interaction_area : Area2D
-@export var inventory : PanelContainer
 
 var target
+var inventory : PanelContainer
+var active_item : Item : set = set_active_item
+
+func _ready() -> void:
+	inventory = get_tree().get_first_node_in_group("player_inventory")
 
 func _physics_process(delta : float) -> void:
 	var input_vector : Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
@@ -40,6 +44,13 @@ func _input(event : InputEvent) -> void:
 				target.toggle_inventory()
 				if not inventory.visible and target.inventory.visible:
 					toggle_inventory()
+
+func set_active_item(value : Item) -> void:
+	active_item = value
+	if active_item:
+		pass
+	else:
+		pass
 
 func toggle_inventory() -> void:
 	inventory.toggle_inventory()

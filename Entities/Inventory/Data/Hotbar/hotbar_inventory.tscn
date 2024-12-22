@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://ckw4apwvnbhys"]
+
+[ext_resource type="FontFile" uid="uid://ctu384ddnwdbu" path="res://Assets/Fonts/MinimalPixelFont.ttf" id="1_ui2oy"]
+[ext_resource type="Texture2D" uid="uid://2vw5bmi25yrv" path="res://Entities/Inventory/Art/Rect.png" id="2_vad5i"]
+[ext_resource type="Script" path="res://Entities/Inventory/Data/Hotbar/hotbar_inventory.gd" id="3_qrsus"]
+[ext_resource type="PackedScene" uid="uid://ypv0tgiuyttb" path="res://Entities/Slots/slot.tscn" id="4_1ebcs"]
+[ext_resource type="Texture2D" uid="uid://2yujumg0tdlj" path="res://Entities/Inventory/Data/Hotbar/Art/Slot Highlight.png" id="5_uej1a"]
+
+[sub_resource type="Theme" id="Theme_dfgcx"]
+default_font = ExtResource("1_ui2oy")
+default_font_size = 16
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0l0b1"]
+texture = ExtResource("2_vad5i")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_75aoj"]
+
+[node name="HotbarInventory" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_dfgcx")
+theme_override_styles/panel = SubResource("StyleBoxTexture_0l0b1")
+script = ExtResource("3_qrsus")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_75aoj")
+
+[node name="Slot" parent="HBoxContainer" instance=ExtResource("4_1ebcs")]
+layout_mode = 2
+
+[node name="Slot2" parent="HBoxContainer" instance=ExtResource("4_1ebcs")]
+layout_mode = 2
+
+[node name="Slot3" parent="HBoxContainer" instance=ExtResource("4_1ebcs")]
+layout_mode = 2
+
+[node name="Slot4" parent="HBoxContainer" instance=ExtResource("4_1ebcs")]
+layout_mode = 2
+
+[node name="Slot5" parent="HBoxContainer" instance=ExtResource("4_1ebcs")]
+layout_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_75aoj")
+
+[node name="Highlight" type="Sprite2D" parent="."]
+position = Vector2(11, 7)
+texture = ExtResource("5_uej1a")
+centered = false
+
+[connection signal="slot_updated" from="HBoxContainer/Slot" to="." method="slot_updated"]
+[connection signal="slot_updated" from="HBoxContainer/Slot2" to="." method="slot_updated"]
+[connection signal="slot_updated" from="HBoxContainer/Slot3" to="." method="slot_updated"]
+[connection signal="slot_updated" from="HBoxContainer/Slot4" to="." method="slot_updated"]
+[connection signal="slot_updated" from="HBoxContainer/Slot5" to="." method="slot_updated"]

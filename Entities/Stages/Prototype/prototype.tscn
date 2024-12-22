@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ibf210iborfi"]
+[gd_scene load_steps=18 format=3 uid="uid://ibf210iborfi"]
 
 [ext_resource type="Script" path="res://Entities/Stages/Prototype/prototype.gd" id="1_iqyha"]
 [ext_resource type="PackedScene" uid="uid://bjg4h1d7jgo15" path="res://Entities/Foraging/Furnace/furnace.tscn" id="2_yr3ti"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://br6686r0bhnoe" path="res://Entities/Items/Data/Fuel/wood.tres" id="11_q5a5i"]
 [ext_resource type="Resource" uid="uid://dvcivqcvswde8" path="res://Entities/Items/Data/Generic/gold.tres" id="12_0xg3m"]
 [ext_resource type="Resource" uid="uid://bdgrykn7hgve7" path="res://Entities/Items/Data/Smeltable/emerald_ore.tres" id="13_oae11"]
+[ext_resource type="PackedScene" uid="uid://ckw4apwvnbhys" path="res://Entities/Inventory/Data/Hotbar/hotbar_inventory.tscn" id="14_6tucd"]
 [ext_resource type="PackedScene" uid="uid://ujkd2gq3ti4n" path="res://Entities/Slots/grabbed_item_slot.tscn" id="14_d5865"]
 [ext_resource type="PackedScene" uid="uid://b8f51ypilr6t4" path="res://Entities/Items/item_tooltip.tscn" id="15_kmgqb"]
 [ext_resource type="Script" path="res://Entities/Items/item_tooltip.gd" id="16_1jut3"]
@@ -35,9 +36,8 @@ position = Vector2(117, 40)
 [node name="Chest2" parent="." instance=ExtResource("3_xj86g")]
 position = Vector2(224, 138)
 
-[node name="Player" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("4_v4h34")]
+[node name="Player" parent="." instance=ExtResource("4_v4h34")]
 position = Vector2(160, 90)
-inventory = NodePath("../UI/ItemDropArea/Inventories/HBoxContainer/PlayerInventory")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -81,7 +81,7 @@ grow_vertical = 2
 pivot_offset = Vector2(72, 52)
 alignment = 1
 
-[node name="PlayerInventory" parent="UI/ItemDropArea/Inventories/HBoxContainer" instance=ExtResource("6_hgn6o")]
+[node name="PlayerInventory" parent="UI/ItemDropArea/Inventories/HBoxContainer" groups=["player_inventory"] instance=ExtResource("6_hgn6o")]
 visible = false
 layout_mode = 2
 
@@ -114,6 +114,20 @@ item = ExtResource("12_0xg3m")
 
 [node name="Slot10" parent="UI/ItemDropArea/Inventories/HBoxContainer/PlayerInventory/VBoxContainer/SlotsContainer" index="9"]
 item = ExtResource("13_oae11")
+
+[node name="HotbarInventory" parent="UI/ItemDropArea/Inventories" instance=ExtResource("14_6tucd")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = 46.0
+offset_right = 80.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="GrabbedItemSlot" parent="UI" instance=ExtResource("14_d5865")]
 visible = false

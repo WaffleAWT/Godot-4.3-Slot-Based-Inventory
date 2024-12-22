@@ -1,5 +1,7 @@
 extends PanelContainer
 
+signal slot_updated(slot)
+
 const MAX_STACK_SIZE : int = 25
 
 const EMPTY_SLOT_TEXTURE : CompressedTexture2D = preload("res://Entities/Slots/Art/Empty Slot.png")
@@ -58,7 +60,7 @@ func handle_right_click() -> void:
 		grab_item()
 
 func grab_item() -> void:
-	if type == 1 and owner.smelting_in_progress:
+	if type == 1 and owner.working:
 		return
 	
 	item_tooltip.hide()
@@ -151,6 +153,8 @@ func update_slot() -> void:
 		slot_texture.texture = EMPTY_SLOT_TEXTURE
 		item_texture.hide()
 		quantity_label.hide()
+	
+	slot_updated.emit(self)
 
 func slots_do_match() -> bool:
 	match type:

@@ -6,6 +6,7 @@ extends StaticBody2D
 
 var inventories_container
 var inventory
+var work_animator : AnimationPlayer
 
 func _ready() -> void:
 	inventories_container = get_tree().get_first_node_in_group("inventories_container")
@@ -16,12 +17,20 @@ func _ready() -> void:
 	
 	if type == 1:
 		inventory.work_updated.connect(work_updated)
+		for child in get_children():
+			if child is AnimationPlayer:
+				work_animator = child
+				break
 
 func work_updated(working : bool) -> void:
 	if working:
 		animator.play("working")
+		if work_animator:
+			work_animator.play("working")
 	else:
 		animator.play("idle")
+		if work_animator:
+			work_animator.play("idle")
 
 func toggle_inventory() -> void:
 	if inventory.visible:
